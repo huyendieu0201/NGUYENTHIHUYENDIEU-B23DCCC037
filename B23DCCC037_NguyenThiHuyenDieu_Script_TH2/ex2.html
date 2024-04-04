@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tính Tổng và Trả về 10</title>
+</head>
+<body>
+
+<h1>Tính Tổng và Trả về 10</h1>
+
+<p>Nhập hai số để tính tổng:</p>
+
+<input type="number" id="number1" placeholder="Số thứ nhất">
+<input type="number" id="number2" placeholder="Số thứ hai">
+
+<button onclick="calculateSum()">Tính Tổng</button>
+
+<p id="result"></p>
+
+<script>
+function calculateSum() {
+    var number1 = parseFloat(document.getElementById("number1").value);
+    var number2 = parseFloat(document.getElementById("number2").value);
+    var sum = number1 + number2;
+
+    if (sum === 10) {
+        document.getElementById("result").innerHTML = "Kết quả là 10";
+    } else {
+        document.getElementById("result").innerHTML = "Kết quả không phải là 10";
+    }
+}
+</script>
+
+</body>
+</html>

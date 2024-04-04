@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thông Tin Cá Nhân</title>
+</head>
+<body>
+
+<h1>Thông Tin Cá Nhân</h1>
+
+<button onclick="printPersonalInfo()">Hiển thị Thông Tin Cá Nhân</button>
+
+<p id="personalInfo"></p>
+
+<script>
+function printPersonalInfo() {
+    var fullName = "Nguyễn Thị Huyền Diệu";
+    var studentID = "B23DCCC037";
+    var personalInfoElement = document.getElementById("personalInfo");
+    personalInfoElement.innerHTML = "Họ và tên: " + fullName + "<br>Mã sinh viên: " + studentID;
+}
+</script>
+
+</body>
+</html>

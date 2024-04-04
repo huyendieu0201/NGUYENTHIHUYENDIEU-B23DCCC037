@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tính Giai Thừa</title>
+</head>
+<body>
+
+<h1>Tính Giai Thừa</h1>
+
+<p>Nhập một số để tính giai thừa:</p>
+
+<input type="number" id="number" placeholder="Nhập số nguyên dương">
+
+<button onclick="calculateFactorial()">Tính Giai Thừa</button>
+
+<p id="result"></p>
+
+<script>
+function calculateFactorial() {
+    var number = parseInt(document.getElementById("number").value);
+    var result = 1;
+
+    // Kiểm tra nếu số nhập vào là âm hoặc không phải là số nguyên dương
+    if (number < 0 || !Number.isInteger(number)) {
+        document.getElementById("result").innerHTML = "Vui lòng nhập số nguyên dương.";
+        return;
+    }
+
+    // Tính giai thừa
+    for (var i = 2; i <= number; i++) {
+        result *= i;
+    }
+
+    // Hiển thị kết quả
+    document.getElementById("result").innerHTML = "Giai thừa của " + number + " là " + result;
+}
+</script>
+
+</body>
+</html>
