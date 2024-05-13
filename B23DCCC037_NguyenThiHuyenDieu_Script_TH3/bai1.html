@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bài jQuery 01</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#content > div").text("UDU students are dynamic and creative !!!");
+  });
+});
+</script>
+</head>
+<body>
+
+<div id="content">
+    <h3>UDU</h3>
+    <div>Sinh viên UDU năng động sáng tạo.</div>
+    <button type="button">Thay đổi</button>
+</div>
+
+</body>
+</html>
