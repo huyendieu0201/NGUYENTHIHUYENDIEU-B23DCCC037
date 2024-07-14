@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; 
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(222, 184, 135, 0.388);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            flex: 1;
+            margin-left: 5px;
+        }
+
+        .logo img {
+            max-height: 60px;
+        }
+
+        .menu {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin: 0 30px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #007BFF;
+        }
+
+        .others {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 1px solid burlywood;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 15px;
+        }
+
+        .search-bar input {
+            border:black ;
+            outline: none;
+            background-color: antiquewhite;
+        }
+
+        .search-bar button {
+            border: none;
+            background:rgba(222, 184, 135, 0.388)  ;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .fa-users, .fa-shopping-bag {
+            margin-left: 15px;
+            color: #333;
+            transition: color 0.3s;
+        }
+        .fa-shopping-bag {
+            margin-right: 15px;
+        }
+
+        .fa-users:hover, .fa-shopping-bag:hover {
+            color: #007BFF;
+        }
+        .contact-form {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+        }
+        main,footer {
+            padding: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+        }
+        footer {
+            background-color: #fff;
+            color: #333;
+            padding: 40px 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        footer .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .footer-content p {
+            margin: 0 0 20px;
+        }
+
+        .social-media {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-media li {
+            margin: 0 10px;
+        }
+
+        .social-media a {
+            color: #333;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-media a:hover {
+            color: #007BFF;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.webp" alt="DE COCO">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="About us.html">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+            <div class="others">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <a href="#" class="fa fa-users"></a>
+                <a href="#" class="fa fa-shopping-bag"></a>
+            </div>    
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-form">
+            <h2>WE WANT TO HEAR FROM YOU</h2>
+            <form action="#">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; DE COCO 2024</p>
+        <ul class="social-media">
+            <a href="https://www.facebook.com/decoco.accessories" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+        </ul>
+    </footer>
+</body>
+</html>

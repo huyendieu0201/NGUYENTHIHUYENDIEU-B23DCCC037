@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Sưu Tập Vòng Tay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/7.0.1/swiper.min.css">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; 
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(222, 184, 135, 0.388);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            flex: 1;
+            margin-left: 5px;
+        }
+
+        .logo img {
+            max-height: 60px;
+        }
+
+        .menu {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin: 0 30px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #007BFF;
+        }
+
+        .others {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 1px solid burlywood;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 15px;
+        }
+
+        .search-bar input {
+            border:black ;
+            outline: none;
+            background-color: antiquewhite;
+        }
+
+        .search-bar button {
+            border: none;
+            background:rgba(222, 184, 135, 0.388)  ;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .fa-users, .fa-shopping-bag {
+            margin-left: 15px;
+            color: #333;
+            transition: color 0.3s;
+        }
+        .fa-shopping-bag {
+            margin-right: 15px;
+        }
+
+        .fa-users:hover, .fa-shopping-bag:hover {
+            color: #007BFF;
+        }
+        .product {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .category-left {
+            background-color: #f2f2f2; /* Màu nền */
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+        }
+
+        .category-left ul {
+            list-style-type: none; /* Xóa dấu đầu dòng của danh sách */
+            padding: 0;
+        }
+
+        .category-left ul li a::before {
+            content: "\2665 "; /* Mã Unicode cho ký tự trái tim */
+            color: #333; /* Màu của ký tự */
+            margin-right: 5px; /* Khoảng cách giữa ký tự và nội dung */
+            font-size: 15px; /* Kích thước của ký tự */
+            vertical-align: middle; /* Căn giữa ký tự theo chiều dọc */
+        }
+
+        .category-left ul li a {
+            text-decoration: none; /* Xóa gạch chân đường link */
+            color: #333; /* Màu chữ */
+            display: block; /* Để link chiếm hết phần mục */
+            padding: 10px 12px; /* Khoảng cách nội dung và biên ngoài của mục */
+            border-radius: 3px; /* Đường viền cong */
+            transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+        }
+
+        .category-left ul li a:hover {
+            background-color:rgba(222, 184, 135, 0.388)  /* Màu nền khi di chuột vào */
+        }
+        .category-right {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-right-top {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .category-right-top img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .category-right-bottom {
+            grid-template-columns: repeat(3, 1fr); /* Hiển thị 3 cột trên mỗi hàng */
+            gap: 20px; /* Khoảng cách giữa các sản phẩm */
+            display:grid ;
+            justify-content: center;
+        }
+        .category-right-bottom img {
+            max-width: 100%;
+            height: 100%;
+        }
+        
+        .product-grid {
+            width: 100%; /* Đảm bảo rằng các sản phẩm chiếm hết không gian của cột trong grid */
+        }
+
+        .product {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .product img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-info {
+            padding: 10px;
+        }
+
+        .product-info h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .product-info .price {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2px;
+            background-color: #fff;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-media {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-media li {
+            margin: 0 5px; /* Giảm khoảng cách giữa các biểu tượng */
+        }
+
+        .social-media a {
+            color: #333;
+            font-size: 1.2em; /* Giảm kích thước biểu tượng */
+            transition: color 0.3s ease;
+        }
+
+        .social-media a:hover {
+            color: #007BFF;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.webp" alt="DE COCO">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="About us.html">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="others">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <a href="#" class="fa fa-users"></a>
+            <a href="#" class="fa fa-shopping-bag"></a>
+        </div>
+    </header>
+    <main>
+        <div class="product">
+            <div class="category-left">
+                <ul>
+                    <li><a href="Nhẫn.html">Nhẫn</a></li>
+                    <li><a href="Vòng tay.html">Vòng tay</a></li>
+                    <li><a href="Vòng cổ.html">Vòng cổ</a></li>
+                    <li><a href="Khuyên tai.html">Khuyên tai</a></li>
+                </ul>
+            </div>
+            <div class="category-right">
+                <div class="category-right-top">
+                    <img src="nền (2).jpg" alt="Image 1">
+                </div>
+                <div class="category-right-bottom">
+                    <div class="product-grid">
+                        <div class="product"> 
+                            <a href="sp 2.html">
+                                <img src="sp 2.jpg" alt="Product 2">
+                            </a> 
+                            <div class="product-info">
+                                <h3>De Coco Rachel </h3>
+                                <span class="price">100K</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-grid">
+                        <div class="product"> 
+                            <a href="sp 3.html">
+                                <img src="sp 3.jpg" alt="Product 3">
+                            </a>
+                            <div class="product-info">
+                                <h3>De Coco Peti</h3>
+                                <span class="price">100K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; DE COCO 2024</p>
+        <ul class="social-media">
+            <a href="https://www.facebook.com/decoco.accessories" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+        </ul>
+    </footer>
+</body>
+</html>

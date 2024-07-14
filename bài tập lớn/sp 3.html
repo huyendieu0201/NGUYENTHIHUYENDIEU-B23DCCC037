@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<style>
+    body {
+        font-family: 'Courier New', Courier, monospace; 
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: rgba(222, 184, 135, 0.388);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        flex: 1;
+        margin-left: 5px;
+    }
+
+    .logo img {
+        max-height: 60px;
+    }
+
+    .menu {
+        flex: 2;
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .menu li {
+        margin: 0 30px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    .menu a:hover {
+        color: #007BFF;
+    }
+
+    .others {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        border: 1px solid burlywood;
+        border-radius: 20px;
+        padding: 5px 10px;
+        margin-right: 15px;
+    }
+
+    .search-bar input {
+        border:black ;
+        outline: none;
+        background-color: antiquewhite;
+    }
+
+    .search-bar button {
+        border: none;
+        background:rgba(222, 184, 135, 0.388)  ;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .fa-users, .fa-shopping-bag {
+        margin-left: 15px;
+        color: #333;
+        transition: color 0.3s;
+    }
+    .fa-shopping-bag {
+        margin-right: 15px;
+    }
+
+    .fa-users:hover, .fa-shopping-bag:hover {
+        color: #007BFF;
+    }
+    .breadcrumb {
+        list-style: none;
+        display: flex;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .breadcrumb-item a {
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s;
+    }
+
+    .breadcrumb-item:not(:last-child)::after {
+        content: ">";
+        margin: 0 5px;
+        color: #007BFF;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #007BFF;
+    }
+
+
+    main {
+        padding: 40px 20px;
+    }
+
+    .breadcrumb {
+        list-style: none;
+        display: flex;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .breadcrumb-item a {
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s;
+    }
+
+    .breadcrumb-item:not(:last-child)::after {
+        content: ">";
+        margin: 0 5px;
+        color: #007BFF;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #007BFF;
+    }
+
+    /* Container for the product page */
+    .product-page {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* Style for the main product image */
+    .product-image {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .product-image img {
+        max-width: 100%;    
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    /* Container for product thumbnails */
+    .product-thumbnails {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    /* Style for each thumbnail */
+    .product-thumbnails img {
+        max-width: 60px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    /* Container for product details */
+    .product-details {
+        flex: 1;
+        max-width: 400px;
+    }
+
+    /* Style for the product name */
+    .product-details h1 {
+        margin-top: 0;
+    }
+
+    /* Style for SKU and price */
+    .product-details .sku,
+    .product-details .price {
+        color: #666;
+    }
+
+    .options {
+        margin: 20px 0;
+    }
+
+    .options label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold; /* Tạo độ nổi bật cho nhãn */
+        color: #555; /* Màu chữ tối hơn để dễ đọc */
+    }
+
+    .options select,
+    .options input[type="number"] {
+        width: 100%;
+        padding: 12px; /* Tăng khoảng cách bên trong để dễ nhìn */
+        margin-bottom: 10px;
+        border: 1px solid #ccc; /* Màu viền sáng hơn để mềm mại hơn */
+        border-radius: 8px; /* Góc bo tròn lớn hơn để trông mềm mại hơn */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tạo bóng mờ nhẹ */
+        font-size: 16px; /* Tăng kích thước chữ */
+        color: #333; /* Màu chữ đậm hơn */
+        background-color: #f9f9f9; /* Màu nền sáng hơn */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển tiếp */
+    }
+
+    .options select:focus,
+    .options input[type="number"]:focus {
+        border-color: #007BFF; /* Màu viền khi được chọn */
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Bóng mờ khi được chọn */
+        outline: none; /* Loại bỏ viền mặc định */
+    }
+
+    .quantity-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .quantity-wrapper input[type="number"] {
+        width: 70px; /* Chiều rộng của ô nhập số lượng */
+        text-align: center; /* Căn giữa văn bản */
+    }
+
+    .quantity-button {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .quantity-button:hover {
+        background-color: #0056b3;
+    }
+
+
+    .buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .buttons .add-to-cart,
+    .buttons .buy-now {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .buttons .add-to-cart {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .buttons .buy-now {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .buttons .add-to-cart:hover {
+        background-color: #0056b3;
+    }
+
+    .buttons .buy-now:hover {
+        background-color: #218838;
+    }
+    .quantity-wrapper input[type="number"] {
+        width: 70px; /* Chiều rộng của ô nhập số lượng */
+        text-align: center; /* Căn giữa văn bản */
+    }
+
+    .related-products {
+        margin-top: 50px;
+    }
+
+    .related-products h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2em;
+        color: #333;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+
+    }
+
+    .product-item {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .product-item:hover {
+        transform: scale(1.05);
+    }
+
+    .product-item img {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product-info h3 {
+        margin: 10px 0;
+        font-size: 1.2em;
+    }
+
+    .price {
+        color: #007BFF;
+        font-weight: bold;
+    }
+
+    footer {
+        text-align: center;
+        padding: 2px;
+        background-color: #fff;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-media {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .social-media li {
+        margin: 0 5px; /* Giảm khoảng cách giữa các biểu tượng */
+    }
+
+    .social-media a {
+        color: #333;
+        font-size: 1.2em; /* Giảm kích thước biểu tượng */
+        transition: color 0.3s ease;
+    }
+
+    .social-media a:hover {
+        color: #007BFF;
+    }
+
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.webp" alt="DE COCO">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="About us.html">About Us</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="others">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <a href="#" class="fa fa-users"></a>
+            <a href="#" class="fa fa-shopping-bag"></a>
+        </div>
+    </header>
+    <main>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="home.html">Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="collections.html">Tất cả sản phẩm</a>
+            </li>
+            <li class="breadcrumb-item">De Coco Peti</li>
+        </ul>
+        <div class="product-page">
+            <div class="product-image">
+                <img id="mainImage" src="sp 3.jpg" alt="Product Image">
+                <div class="product-thumbnails">
+                    <img src="sp 3.jpg" alt="Product Thumbnail" onclick="changeImage(this)">
+                    <img src="sp 3(1).jpg" alt="Product Thumbnail" onclick="changeImage(this)">
+                    <img src="sp 2(2).jpg" alt="Product Thumbnail" onclick="changeImage(this)">
+                </div>
+            </div>
+            <div class="product-details">
+                <h1>De Coco Peti</h1>
+                <p class="sku">SKU: 0003</p>
+                <p class="price">100K</p>
+                <div class="options">
+                    <label for="size">Size:</label>
+                    <select id="size">
+                        <option value="select">Select</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                    <label for="quantity">Quantity:</label>
+                    <div class="quantity-options">
+                        <div class="quantity-wrapper">
+                            <button class="quantity-button" onclick="decreaseQuantity()">-</button>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1">
+                            <button class="quantity-button" onclick="increaseQuantity()">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="related-products">
+            <h1>You Might Also Like</h1>
+            <div class="product-grid">
+                <div class="product-item"> 
+                    <a href="sp 4.html">
+                        <img src="sp 4.jpg" alt="Product 1">
+                    </a> 
+                    <div class="product-info">
+                        <h3>De Coco Mori</h3>
+                        <span class="price">100K</span>
+                    </div>
+                </div>
+                <div class="product-item"> 
+                    <a href="sp 5.html">
+                        <img src="sp 5.jpg" alt="Product 1">
+                    </a> 
+                    <div class="product-info">
+                        <h3>De Coco Starfish</h3>
+                        <span class="price">100K</span>
+                    </div>
+                </div>
+                <div class="product-item"> 
+                    <a href="sp 6.html">
+                        <img src="sp 6.jpg" alt="Product 1">
+                    </a> 
+                    <div class="product-info">
+                        <h3>De Coco Narin</h3>
+                        <span class="price">100K</span>
+                    </div>
+                </div>
+                <div class="product-item"> 
+                    <a href="sp 7.html">
+                        <img src="sp 7.jpg" alt="Product 1">
+                    </a> 
+                    <div class="product-info">
+                        <h3>De Coco Lalin</h3>
+                        <span class="price">100K</span>
+                    </div>
+                </div>
+                <div class="product-item"> 
+                    <a href="sp 8.html">
+                        <img src="sp 8.jpg" alt="Product 1">
+                    </a> 
+                    <div class="product-info">
+                        <h3>DECOCO ACC J'adore</h3>
+                        <span class="price">100K</span>
+                    </div>
+                </div>
+            </div>   
+        </div>  
+    </main>
+    <footer>
+        <p>&copy; DE COCO 2024</p>
+        <ul class="social-media">
+            <a href="https://www.facebook.com/decoco.accessories" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+        </ul>
+    </footer>
+
+    <script>
+        function decreaseQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+
+        function increaseQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        }
+
+    </script>
+    <script>
+        function changeImage(thumbnail) {
+            var mainImage = document.getElementById('mainImage');
+            mainImage.src = thumbnail.src;
+        }
+
+        function decreaseQuantity() {
+            var quantity = document.getElementById('quantity');
+            if (quantity.value > 1) {
+                quantity.value = parseInt(quantity.value) - 1;
+            }
+        }
+
+        function increaseQuantity() {
+            var quantity = document.getElementById('quantity');
+            quantity.value = parseInt(quantity.value) + 1;
+        }
+    </script>
+
+</body>
+</html>
